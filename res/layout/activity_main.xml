@@ -1,14 +1,20 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main" >
+    android:orientation="vertical"
+    android:layout_gravity="center" >
  
     <TextView
+        android:id="@+id/main_text_view1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Starting broadcast reciever to check current running tasks." />
+        android:layout_height="wrap_content" />
+    
+    <Button
+        android:id="@+id/start_service_button"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:textSize="24sp"
+        android:text="@string/start_service_button" />
  
-</RelativeLayout>
+</LinearLayout>
