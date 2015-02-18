@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
           
-        currentAppName = "ASDF";
+        currentAppName = "";
         instance = this;
         
         initialize();
@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
 	
  
     private void initialize() {
-         
+    	// Initicalize the broadcast receivers
     	getBaseContext().getApplicationContext().sendBroadcast(
                 new Intent("StartupReceiver_Manual_Start"));
     	

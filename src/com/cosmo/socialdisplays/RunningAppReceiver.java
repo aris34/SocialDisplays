@@ -52,6 +52,7 @@ public class RunningAppReceiver extends BroadcastReceiver {
     	try {
     		PackageManager pm = mContext.getPackageManager();
     		
+    		// Get a list of the running apps
     		ActivityManager am1 = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
             @SuppressWarnings("deprecation")
 			List<RunningTaskInfo> processes = am1.getRunningTasks(Integer.MAX_VALUE);
@@ -60,9 +61,12 @@ public class RunningAppReceiver extends BroadcastReceiver {
             
             	icon = null;
             	applicationName = null;
+            	// Get the activity that is running in the foreground
             	packageName = processes.get(0).topActivity
                         .getPackageName();
             	
+            	// If the current activity is not inkCaseCompanionApp or the launcher
+            	// get the activity name and icon to send it to InkCase display
             	if ( (!packageName.equals(mActivity.currentAppName)) && 
             			(!packageName.equals("com.gajah.inkcase.companion")) &&
             			(!packageName.contains("launcher")) ){
@@ -84,6 +88,8 @@ public class RunningAppReceiver extends BroadcastReceiver {
 	                }
 	                mActivity.currentAppName = packageName;
             	}
+            	// If the current activity is the launcher
+            	// get the home.png icon from the assets to show on the InkCase
             	else if((!packageName.equals(mActivity.currentAppName)) && 
             			(packageName.contains("launcher")) ) {
 
@@ -101,7 +107,8 @@ public class RunningAppReceiver extends BroadcastReceiver {
     }
     
     public void sendToInkCase(Drawable icon, String name) {
-    	// 
+    	// Creates a bitmap file using the icon and the name of the app
+    	// and sends it to be displayed on the InkCase
     	
     	String[] parts = splitIntoLines(name, 9);
     	
